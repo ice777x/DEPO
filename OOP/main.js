@@ -1,54 +1,61 @@
-// let val;
-
-// let Multiply = function (a, b, c, callback) {
-// 	let arr = [];
-// 	for (let i = 0; i < 3; i++) {
-// 		arr[i] = callback(arguments[i] ** 2);
+// var p = new Promise(function (resolve, reject) {
+// 	if (true) {
+// 		resolve("success");
+// 	} else {
+// 		reject("Fail");
 // 	}
-// 	return arr;
-// };
+// });
 
-// let addOne = function (a) {
-// 	return a + 1;
-// };
+// p.then(function (data) {
+// 	console.log(data);
+// }).catch(function (err) {
+// 	console.log(err);
+// });
 
-// val = Multiply(5, 10, 20, addOne);
+// new Promise(function (resolve, reject) {
+// 	setTimeout(() => {
+// 		resolve(5);
+// 	}, 1000);
+// })
+// 	.then(function (data) {
+// 		console.log(data);
+// 		return data ** 2;
+// 	})
+// 	.then(function (number) {
+// 		console.log(number);
+// 		return number ** 2;
+// 	})
+// 	.then(function (number) {
+// 		console.log(number);
+// 	});
 
-// console.log(val);
+const isMomHappy = true;
 
-/////////////////////////////////////////////////////
-
-// (function () {
-// 	var days = [1, 2, 3, 4, 5];
-// })();
-
-// (function () {
-// 	var days = [1, 2, 3, 4, 5];
-// })();
-
-/////////////////////////////////////////////////////
-
-let Question = function (hobby) {
-	switch (hobby) {
-		case "car":
-			return function (name) {
-				console.log(name, "do you have a car");
-			};
-		case "book":
-			return function (name) {
-				console.log(name, "what is a favourite book ?");
-			};
-		case "software":
-			return function (name, type) {
-				console.log(name, "are you interested in python ?", type);
-			};
-		default:
-			return function (name) {
-				console.log(name, "how are you?");
-			};
+const willGetNewPhone = new Promise((resolve, reject) => {
+	if (isMomHappy) {
+		const phone = {
+			name: "iphone 8",
+			price: 4000,
+			color: "silver",
+		};
+		resolve(phone);
+	} else {
+		const error = new Error("ZOoooooooort");
+		reject(error);
 	}
+});
+
+const showToFriends = function (phone) {
+	const message = "He friends this is my new phone " + phone.name;
+	return Promise.resolve(message);
 };
 
-var carQuestion = Question("software");
-
-carQuestion("cinar", "zort");
+const askMom = function () {
+	willGetNewPhone
+		.then(showToFriends) // bundan sonra yakaliyoruz
+		.then((message) => console.log(message))
+		.catch((err) => {
+			console.log(err);
+		});
+};
+askMom();
