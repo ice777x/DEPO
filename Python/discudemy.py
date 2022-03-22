@@ -54,7 +54,7 @@ class DiscUdemy:
             soupS = BeautifulSoup(html, 'html.parser')
             self.discUdemy(soupS)
 
-        return len(data)
+        return
 
     def getDisc(self):
         asyncio.run(self._getDiscLink)
