@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 class Crawl():
     def __init__(self,url):
         self.url = url
-        self.url_list = list(self.url)
+        self.url_list = [self.url]
     def connect(self,url):
         r = requests.get(
                 url,
@@ -16,7 +16,10 @@ class Crawl():
         return soup
     
     def next_navigation(self,soup):
-        next_navigation = "https://www.google.com"+soup.select("td a#pnnext")[0]['href']
+        try:
+            next_navigation = "https://www.google.com"+soup.select("td a#pnnext")[0]['href']
+        except:
+            return
         self.url_list.append(next_navigation)
 
     def crawl(self):
