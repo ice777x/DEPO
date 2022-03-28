@@ -8,9 +8,10 @@ class Translator():
 
     def __repr__(self) -> str:
         return """
-translator = Translator()
-translator.translate(text="Hello, World!",src="en",dest="ko") 
-<< Good Morning --> 안녕하세요."""
+Use this:
+>>> translator = Translator()
+>>> translator.translate(text="Hello, World!", src="en", dest="ko") 
+>>> Good Morning --> 안녕하세요."""
 
     def translate(self, text: str, src="auto", dest=""):
         """<translator.translate(text="Hello, World!",src="en",dest="ko")>
