@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 class Crawl():
-    def __init__(self,url):
-        self.url = url
+    def __init__(self,query):
+        self.url = "https://www.google.com/search?q="+ query
         self.url_list = [self.url]
     def connect(self,url):
         r = requests.get(
@@ -27,7 +27,3 @@ class Crawl():
             soup = self.connect(i)
             self.next_navigation(soup)
         return self.url_list
-url = "https://www.google.com/search?q=werwer"
-c = Crawl(url)
-z = c.crawl()
-print(z)
