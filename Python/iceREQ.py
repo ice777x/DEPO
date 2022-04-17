@@ -60,5 +60,5 @@ async def main():
 
 @timer
 def parse():
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+#     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy()) # windows için
     asyncio.run(main())
